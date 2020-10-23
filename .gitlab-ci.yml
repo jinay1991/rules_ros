@@ -1,0 +1,76 @@
+# ------------
+# Docker Image
+# ------------
+include:
+  - template: Code-Quality.gitlab-ci.yml
+  - template: SAST.gitlab-ci.yml
+
+# ------------
+# Various Jobs
+# ------------
+stages:
+  - check
+  - build
+  - test
+  - deploy
+
+# ------------
+# Stage: check
+# ------------
+clang-format:
+  stage: check
+  image: ubuntu:20.04
+  before_script:
+    - apt-get update -y
+    - apt-get install -y libtool clang-format clang-tidy
+  script:
+    - find . -regex '.*\.\(ino\|cpp\|hpp\|cc\|cxx\|h\)' -exec cat {} \; | diff -u <(find . -regex '.*\.\(ino\|cpp\|hpp\|cc\|cxx\|h\)' -exec clang-format -style=file {} -verbose \;) -
+
+buildifier:
+  stage: check
+  image: ubuntu:20.04
+  before_script:
+    - apt-get update -y
+    - apt-get install -y wget curl
+    - wget https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier
+    - chmod +x buildifier
+    - mv buildifier /usr/bin
+  script:
+    - buildifier -v -d -r .
+
+cppcheck:
+  stage: check
+  image: ubuntu:20.04
+  before_script:
+    - apt-get update -y
+    - apt-get install -y cppcheck python python-pygments
+  script:
+    - cppcheck --template=gcc --enable=all --inconclusive --std=c++14 -I perception/**/*.h perception/**/*.cpp  > static_code_analysis.log
+    - cppcheck --template=gcc --enable=all --inconclusive --std=c++14 -I perception/**/*.h perception/**/*.cpp --xml 2> static_code_analysis.xml
+    - cppcheck-htmlreport --file=static_code_analysis.xml --report-dir=static_code_analysis_report --source-dir=.
+  artifacts:
+    name: static_code_analysis
+    paths:
+      - static_code_analysis_report/
+      - static_code_analysis.xml
+      - static_code_analysis.log
+    expire_in: 7 days
+
+# ------------
+# Stage: Build
+# ------------
+bazel-build-and-test:
+  stage: build
+  image: registry.gitlab.com/ad_platform/rules_ros
+  script:
+    - bazel build //... 
+    - bazel test //...  --test_output=all --nocache_test_results
+  after_script:
+    - pip install -U pip 
+    - pip install -U xunitmerge
+    - xunitmerge $(find bazel-out/ -name test.xml) ./merged_test_results.xml
+  artifacts:
+    reports:
+      junit: merged_test_results.xml
+    name: TestResults
+    when: on_success
