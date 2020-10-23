@@ -14,9 +14,12 @@ load("@//third_party/roscpp_core:roscpp_core.bzl", "roscpp_core")
 load("@//third_party/rules_python:rules_python.bzl", "rules_python")
 load("@//third_party/zlib:zlib.bzl", "zlib")
 load("@//third_party/zstd:zstd.bzl", "zstd")
+load("@//third_party/std_msgs:std_msgs.bzl", "std_msgs")
+load("@//third_party/bazel_skylib:bazel_skylib.bzl", "bazel_skylib")
 
 def ros_dependencies():
     """ Load 3rd party dependencies """
+    bazel_skylib()
     boost()
     bzip2()
     console_bridge()
@@ -31,5 +34,6 @@ def ros_dependencies():
     rosconsole()
     roscpp_core()
     rules_python()
+    std_msgs()
     zlib()
     zstd()

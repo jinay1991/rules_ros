@@ -1,4 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
+load("@//third_party/genmsg:generate_messages.bzl", "generate_messages")
 
 genrule(
     name = "generate_ros_common",
@@ -20,6 +21,19 @@ genrule(
                $(SRCS) > $(OUTS)",
 )
 
+generate_messages(
+    name = "builtin_ros_comm_msgs_whatever",
+    srcs = glob(["clients/roscpp/msg/*.msg"]),
+    ros_package_name = "roscpp",
+)
+
+# generate_services(
+#     name = "builtin_ros_comm_msgs_srv",
+#     srcs = glob(["clients/roscpp/srv/*.srv"]),
+#     ros_package_name = "roscpp",
+#     deps = ["@ros_comm//:builtin_ros_comm_msgs_whatever"],
+# )
+
 cc_library(
     name = "roscpp",
     srcs = glob(["clients/roscpp/src/libros/**/*.cpp"]) + [":generate_config"],
@@ -32,6 +46,7 @@ cc_library(
     linkopts = ["-lm"],
     visibility = ["//visibility:public"],
     deps = [
+        ":builtin_ros_comm_msgs_whatever",
         ":xmlrpcpp",
         "@boost//:scope_exit",
         "@boost//:thread",

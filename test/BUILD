@@ -6,6 +6,5 @@ cc_test(
     deps = [
         "@googletest//:gtest_main",
         "@ros_comm//:roscpp",
-        "@roscpp_core",
     ],
 )

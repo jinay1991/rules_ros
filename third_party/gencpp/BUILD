@@ -1,1 +1,1 @@
-package_visibility(default_visibility = ["//visibility:public"])
+package(default_visibility = ["//visibility:public"])

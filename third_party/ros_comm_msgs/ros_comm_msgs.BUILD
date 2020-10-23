@@ -1,12 +1,10 @@
-filegroup(
-    name = "rosgraph_msgs",
+load("@//third_party/genmsg:generate_messages.bzl", "generate_messages")
+
+package(default_visibility = ["//visibility:public"])
+
+generate_messages(
+    name = "builtin_ros_comm_msgs",
     srcs = glob(["rosgraph_msgs/**/*.msg"]),
-    visibility = ["//visibility:public"],
+    ros_package_name = "ros_comm_msgs",
+    deps = ["@std_msgs//:generate_header"],
 )
-
-filegroup(
-    name = "std_srvs",
-    srcs = glob(["std_srvs/**/*.srv"]),
-    visibility = ["//visibility:public"],
-)
-

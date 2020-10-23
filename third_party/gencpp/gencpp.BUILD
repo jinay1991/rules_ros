@@ -1,4 +1,4 @@
-load("@rules_python//python:defs.bzl", "py_binary")
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 load("@pip_deps//:requirements.bzl", "requirement")
 
 filegroup(
@@ -9,7 +9,7 @@ filegroup(
     ],
 )
 
-py_binary(
+py_library(
     name = "gencpp",
     srcs = glob(["src/**/*.py"]),
     imports = ["src"],
@@ -21,10 +21,10 @@ py_binary(
     srcs = glob(["scripts/*.py"]),
     data = [":templates"],
     main = "gen_cpp.py",
-    visibility = ["//visibilty:public"],
+    visibility = ["//visibility:public"],
     deps = [
         ":gencpp",
-        "@genmsg",
+        "@genmsg_archive//:genmsg",
         requirement("empy"),
     ],
 )
