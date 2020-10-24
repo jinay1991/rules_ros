@@ -4,7 +4,7 @@ cc_test(
     name = "unit_tests",
     srcs = ["ros_test.cpp"],
     deps = [
-        "@googletest//:gtest_main",
+        "@googletest//:gtest",
         "@ros_comm//:roscpp",
     ],
 )

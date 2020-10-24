@@ -20,7 +20,6 @@ ROS Components list (Available/Not Available)
     - [x] rosgraph_msg
 - [x] std_msgs
 - [x] boost
-- [ ] rospack
 - [x] genmsg
 - [x] gencpp
 - [x] message_generation
