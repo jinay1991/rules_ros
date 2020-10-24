@@ -1,6 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("@//third_party/genmsg:generate_messages.bzl", "generate_messages")
-load("@//third_party/genmsg:generate_services.bzl", "generate_services")
+load("@//third_party/gencpp:message_generation.bzl", "generate_messages")
+load("@//third_party/gencpp:service_generation.bzl", "generate_services")
 
 genrule(
     name = "generate_ros_common",

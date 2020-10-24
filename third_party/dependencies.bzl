@@ -16,6 +16,7 @@ load("@//third_party/zlib:zlib.bzl", "zlib")
 load("@//third_party/zstd:zstd.bzl", "zstd")
 load("@//third_party/std_msgs:std_msgs.bzl", "std_msgs")
 load("@//third_party/bazel_skylib:bazel_skylib.bzl", "bazel_skylib")
+load("@//third_party/rospack:rospack.bzl", "rospack")
 
 def ros_dependencies():
     """ Load 3rd party dependencies """
@@ -28,6 +29,7 @@ def ros_dependencies():
     glog()
     googletest()
     lzma()
+    rospack()
     ros_comm_msgs()
     ros_comm()
     ros()
