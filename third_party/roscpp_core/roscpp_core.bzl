@@ -10,4 +10,3 @@ def roscpp_core():
             build_file = "//third_party/roscpp_core:roscpp_core.BUILD",
             url = "https://github.com/ros/roscpp_core/archive/0.6.14.tar.gz",
         )
-
