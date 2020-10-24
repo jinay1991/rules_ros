@@ -4,8 +4,6 @@
 stages:
   - check
   - build
-  - test
-  - deploy
 
 # ------------
 # Stage: check
@@ -14,7 +12,7 @@ buildifier:
   stage: check
   image: ubuntu:20.04
   before_script:
-    - apt-get update && apt-get install wget 
+    - apt-get update && apt-get install -y wget 
     - wget https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier
     - chmod +x buildifier
     - mv buildifier /usr/bin
