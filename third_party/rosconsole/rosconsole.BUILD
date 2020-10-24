@@ -2,10 +2,11 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "rosconsole",
-    srcs = glob(
-        ["src/**/*.cpp"],
-        exclude = ["src/rosconsole/impl/rosconsole_log4cxx.cpp"],
-    ),
+    srcs = [
+        "src/rosconsole/impl/rosconsole_print.cpp",
+        "src/rosconsole/rosconsole.cpp",
+        "src/rosconsole/rosconsole_backend.cpp",
+    ],
     hdrs = glob(["include/**/*.h"]),
     includes = ["include"],
     visibility = ["//visibility:public"],
@@ -14,6 +15,7 @@ cc_library(
         "@boost//:system",
         "@boost//:thread",
         "@glog",
-        "@roscpp_core",
+        "@roscpp_core//:cpp_common",
+        "@roscpp_core//:rostime",
     ],
 )

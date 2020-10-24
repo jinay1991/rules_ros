@@ -5,6 +5,6 @@ package(default_visibility = ["//visibility:public"])
 generate_messages(
     name = "builtin_ros_comm_msgs",
     srcs = glob(["rosgraph_msgs/**/*.msg"]),
-    ros_package_name = "ros_comm_msgs",
+    ros_package_name = "rosgraph_msgs",
     deps = ["@std_msgs//:generate_header"],
 )

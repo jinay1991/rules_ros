@@ -1,5 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("@//third_party/genmsg:generate_messages.bzl", "generate_messages")
+load("@//third_party/genmsg:generate_services.bzl", "generate_services")
 
 genrule(
     name = "generate_ros_common",
@@ -27,12 +28,12 @@ generate_messages(
     ros_package_name = "roscpp",
 )
 
-# generate_services(
-#     name = "builtin_ros_comm_msgs_srv",
-#     srcs = glob(["clients/roscpp/srv/*.srv"]),
-#     ros_package_name = "roscpp",
-#     deps = ["@ros_comm//:builtin_ros_comm_msgs_whatever"],
-# )
+generate_services(
+    name = "builtin_ros_comm_msgs_srv",
+    srcs = glob(["clients/roscpp/srv/*.srv"]),
+    ros_package_name = "roscpp",
+    deps = ["@ros_comm//:builtin_ros_comm_msgs_whatever"],
+)
 
 cc_library(
     name = "roscpp",
@@ -46,10 +47,14 @@ cc_library(
     linkopts = ["-lm"],
     visibility = ["//visibility:public"],
     deps = [
-        ":builtin_ros_comm_msgs_whatever",
         ":xmlrpcpp",
+        "@boost//:chrono",
+        "@boost//:filesystem",
         "@boost//:scope_exit",
+        "@boost//:system",
         "@boost//:thread",
+        "@ros_comm//:builtin_ros_comm_msgs_srv",
+        "@ros_comm//:builtin_ros_comm_msgs_whatever",
         "@ros_comm_msgs//:builtin_ros_comm_msgs",
         "@rosconsole",
         "@roscpp_core",
@@ -58,11 +63,21 @@ cc_library(
 
 cc_library(
     name = "xmlrpcpp",
-    srcs = glob(["utilities/xmlrpcpp/src/*.cpp"]),
-    hdrs = glob(["utilities/xmlrpcpp/include/**/*.h"]),
-    includes = ["utilities/xmlrpcpp/include"],
+    srcs = glob([
+        "utilities/xmlrpcpp/src/*.cpp",
+        "utilities/xmlrpcpp/libb64/src/*.c",
+    ]),
+    hdrs = glob([
+        "utilities/xmlrpcpp/include/**/*.h",
+        "utilities/xmlrpcpp/libb64/include/**/*.h",
+    ]),
+    includes = [
+        "utilities/xmlrpcpp/include",
+        "utilities/xmlrpcpp/libb64/include",
+    ],
     visibility = ["//visibility:public"],
     deps = [
-        "@roscpp_core",
+        "@roscpp_core//:cpp_common",
+        "@roscpp_core//:rostime",
     ],
 )
