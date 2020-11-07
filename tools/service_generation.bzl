@@ -1,6 +1,6 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("@bazel_skylib//lib:paths.bzl", "paths")
-load("@//third_party/gencpp:message_generation.bzl", "RosGenProvider")
+load("@rules_ros//tools:message_generation.bzl", "RosGenProvider")
 
 def _gensrv_outs(srcs, ros_package_name, extension):
     """ 

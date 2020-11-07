@@ -1,4 +1,4 @@
-load("@//third_party/gencpp:message_generation.bzl", "generate_messages")
+load("@rules_ros//tools:message_generation.bzl", "generate_messages")
 
 package(default_visibility = ["//visibility:public"])
 

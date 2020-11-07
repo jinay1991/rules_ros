@@ -1,5 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("@//third_party/boost:boost_library.bzl", "boost_library")
+load("@rules_ros//third_party/boost:boost_library.bzl", "boost_library")
 
 config_setting(
     name = "linux_x86_64",

@@ -1,5 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("@//third_party/gencpp:message_generation.bzl", "generate_messages")
+load("@rules_ros//tools:message_generation.bzl", "generate_messages")
 
 package(default_visibility = ["//visibility:public"])
 
