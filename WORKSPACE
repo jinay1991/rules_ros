@@ -1,4 +1,6 @@
-load("@//third_party:dependencies.bzl", "ros_dependencies")
+workspace(name = "rules_ros")
+
+load("@rules_ros//third_party:dependencies.bzl", "ros_dependencies")
 
 ros_dependencies()
 

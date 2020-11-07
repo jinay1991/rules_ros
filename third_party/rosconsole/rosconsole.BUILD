@@ -14,7 +14,6 @@ cc_library(
         "@boost//:regex",
         "@boost//:system",
         "@boost//:thread",
-        "@glog",
         "@roscpp_core//:cpp_common",
         "@roscpp_core//:rostime",
     ],
