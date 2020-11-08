@@ -113,8 +113,8 @@ py_library(
 
 genrule(
     name = "rosbag_py",
-    srcs = ["tools/rosbag/src/rosbag"],
-    outs = ["tools/rosbag/src/rosbag_.py"],
+    srcs = ["tools/rosbag/scripts/rosbag"],
+    outs = ["tools/rosbag/scripts/rosbag_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -158,8 +158,8 @@ py_library(
 
 genrule(
     name = "rosgraph_py",
-    srcs = ["tools/rosgraph/src/rosgraph"],
-    outs = ["tools/rosgraph/src/rosgraph_.py"],
+    srcs = ["tools/rosgraph/scripts/rosgraph"],
+    outs = ["tools/rosgraph/scripts/rosgraph_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -190,8 +190,8 @@ py_library(
 
 genrule(
     name = "roslaunch_py",
-    srcs = ["tools/roslaunch/src/roslaunch"],
-    outs = ["tools/roslaunch/src/roslaunch_.py"],
+    srcs = ["tools/roslaunch/scripts/roslaunch"],
+    outs = ["tools/roslaunch/scripts/roslaunch_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -211,8 +211,8 @@ py_binary(
 # roscore
 genrule(
     name = "roscore_py",
-    srcs = ["tools/roslaunch/src/roscore"],
-    outs = ["tools/roslaunch/src/roscore.py"],
+    srcs = ["tools/roslaunch/scripts/roscore"],
+    outs = ["tools/roslaunch/scripts/roscore.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -248,8 +248,8 @@ py_library(
 
 genrule(
     name = "rosmaster_py",
-    srcs = ["tools/rosmaster/src/rosmaster"],
-    outs = ["tools/rosmaster/src/rosmaster_.py"],
+    srcs = ["tools/rosmaster/scripts/rosmaster"],
+    outs = ["tools/rosmaster/scripts/rosmaster_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -277,8 +277,8 @@ py_library(
 
 genrule(
     name = "rosmsg_py",
-    srcs = ["tools/rosmsg/src/rosmsg"],
-    outs = ["tools/rosmsg/src/rosmsg_.py"],
+    srcs = ["tools/rosmsg/scripts/rosmsg"],
+    outs = ["tools/rosmsg/scripts/rosmsg_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -306,8 +306,8 @@ py_library(
 
 genrule(
     name = "rosnode_py",
-    srcs = ["tools/rosnode/src/rosnode"],
-    outs = ["tools/rosnode/src/rosnode_.py"],
+    srcs = ["tools/rosnode/scripts/rosnode"],
+    outs = ["tools/rosnode/scripts/rosnode_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -340,13 +340,13 @@ py_library(
 
 genrule(
     name = "rosparam_py",
-    srcs = ["tools/rosparam/src/rosparam"],
-    outs = ["tools/rosparam/src/rosparam_.py"],
+    srcs = ["tools/rosparam/scripts/rosparam"],
+    outs = ["tools/rosparam/scripts/rosparam_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
 py_binary(
-    name = "rosservice",
+    name = "rosparam",
     srcs = [":rosparam_py"],
     main = ":rosparam_py",
     python_version = "PY3",
@@ -369,8 +369,8 @@ py_library(
 
 genrule(
     name = "rosservice_py",
-    srcs = ["tools/rosnode/src/rosnode"],
-    outs = ["tools/rosnode/src/rosnode_.py"],
+    srcs = ["tools/rosservice/scripts/rosservice"],
+    outs = ["tools/rosservice/scripts/rosservice_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -403,8 +403,8 @@ py_library(
 
 genrule(
     name = "rostest_py",
-    srcs = ["tools/rostest/src/rostest"],
-    outs = ["tools/rostest/src/rostest_.py"],
+    srcs = ["tools/rostest/scripts/rostest"],
+    outs = ["tools/rostest/scripts/rostest_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 
@@ -432,8 +432,8 @@ py_library(
 
 genrule(
     name = "rostopic_py",
-    srcs = ["tools/rostopic/src/rostopic"],
-    outs = ["tools/rostopic/src/rostopic_.py"],
+    srcs = ["tools/rostopic/scripts/rostopic"],
+    outs = ["tools/rostopic/scripts/rostopic_.py"],
     cmd = "cp -R `readlink -f $(SRCS)` $(OUTS)",
 )
 

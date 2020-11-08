@@ -13,6 +13,7 @@ py_binary(
     name = "genmsgpy_runner",
     srcs = glob(["scripts/*.py"]),
     main = "genmsg_py.py",
+    python_version = "PY3",
     visibility = ["//visibility:public"],
     deps = [
         ":genpy",
@@ -25,6 +26,7 @@ py_binary(
     name = "gensrvpy_runner",
     srcs = glob(["scripts/*.py"]),
     main = "gensrv_py.py",
+    python_version = "PY3",
     visibility = ["//visibility:public"],
     deps = [
         ":genpy",

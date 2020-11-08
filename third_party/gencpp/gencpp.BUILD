@@ -13,6 +13,7 @@ py_library(
     name = "gencpp",
     srcs = glob(["src/**/*.py"]),
     imports = ["src"],
+    srcs_version = "PY3",
     visibility = ["//visibility:public"],
 )
 
@@ -21,6 +22,7 @@ py_binary(
     srcs = glob(["scripts/*.py"]),
     data = [":templates"],
     main = "gen_cpp.py",
+    python_version = "PY3",
     visibility = ["//visibility:public"],
     deps = [
         ":gencpp",

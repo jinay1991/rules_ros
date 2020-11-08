@@ -20,6 +20,7 @@ py_library(
     name = "roslib",
     srcs = glob(["core/roslib/src/**/*.py"]),
     imports = ["core/roslib/src"],
+    srcs_version = "PY3",
     visibility = ["//visibility:public"],
     deps = [
         ":rosclean",
