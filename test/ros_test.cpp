@@ -27,7 +27,7 @@ class RosPubSubTest : public ::testing::Test
         std_msgs::String msg;
         msg.data = "hello world!!\n";
         std::cout << "----\n";
-        // ROS_INFO("%s", msg.data.c_str());
+        ROS_INFO("%s", msg.data.c_str());
 
         // publisher_.publish(msg);
         // ros::spinOnce();
@@ -41,17 +41,17 @@ class RosPubSubTest : public ::testing::Test
     ros::Rate loop_rate_;
 };
 
-// TEST_F(RosPubSubTest, GivenPublishedMessage_ExpectSameSubscribed)
-// {
-//     //     // When
-//     //     RunOnce();
-// }
+TEST_F(RosPubSubTest, GivenPublishedMessage_ExpectSameSubscribed)
+{
+    // When
+    RunOnce();
+}
 
 }  // namespace
 
 int main(int argc, char** argv)
 {
-    // ros::init(argc, argv, "chatter");
+    ros::init(argc, argv, "chatter");
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
