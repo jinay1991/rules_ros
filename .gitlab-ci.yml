@@ -26,7 +26,7 @@ bazel-build:
   stage: build
   image: ubuntu:20.04
   before_script:
-    - apt-get update && apt-get install -y build-essential curl
+    - apt-get update && apt-get install -y build-essential curl python-is-python3
     - curl https://bazel.build/bazel-release.pub.gpg | apt-key add -
     - echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
     - apt-get update && apt-get install -y bazel

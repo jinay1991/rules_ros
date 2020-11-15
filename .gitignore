@@ -1,6 +1,9 @@
 # Extras
 .DS_Store
 
+# Compilation database
+compile_commands.json
+
 # bazel build files
 bazel-*
 
