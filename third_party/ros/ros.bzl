@@ -5,8 +5,8 @@ def ros():
     if "ros" not in native.existing_rules():
         http_archive(
             name = "ros",
-            sha256 = "2ff175a9bb2b1849f12a6bf972ce7e4313d543a2bbc83b60fdae7db6e0ba353f",
-            strip_prefix = "ros-1.0.1",
+            sha256 = "7a1e729de9be807862b6ed721475fec74583f6dc0c06b233b06b1b9fda31291e",
+            strip_prefix = "ros-1.15.7",
             build_file = "//third_party/ros:ros.BUILD",
-            url = "https://github.com/ros/ros/archive/1.0.1.tar.gz",
+            url = "https://github.com/ros/ros/archive/1.15.7.tar.gz",
         )
