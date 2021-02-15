@@ -154,6 +154,7 @@ py_library(
     data = ["tools/rosgraph/srcs"],
     imports = ["tools/rosgraph/src"],
     srcs_version = "PY3",
+    visibility = ["//visibility:public"],
 )
 
 genrule(

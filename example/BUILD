@@ -14,6 +14,7 @@ cc_binary(
     srcs = ["listener.cpp"],
     visibility = ["//visibility:public"],
     deps = [
+        "@pluginlib",
         "@ros_comm//:roscpp",
     ],
 )

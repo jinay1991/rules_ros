@@ -51,6 +51,7 @@ cc_library(
         "Foundation/include/*.h",
     ]) + zlib_headers,
     includes = ["Foundation/include"],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -62,6 +63,7 @@ cc_library(
         "JSON/include/*.h",
     ]),
     includes = ["JSON/include"],
+    visibility = ["//visibility:public"],
     deps = [
         ":foundation",
     ],

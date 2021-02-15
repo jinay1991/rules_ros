@@ -9,7 +9,6 @@ cc_library(
     deps = [
         "@boost//:filesystem",
         "@class_loader",
-        "@ros//:roslib",
         "@rosconsole",
     ],
 )

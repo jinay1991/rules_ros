@@ -22,6 +22,7 @@ cc_library(
         "@boost//:system",
         "@boost//:thread",
         "@console_bridge",
-        "@poco",
+        "@poco//:foundation",
+        "@poco//:json",
     ],
 )
