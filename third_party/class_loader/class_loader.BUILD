@@ -15,6 +15,7 @@ cc_library(
         "include/class_loader/meta_object.hpp",
         "include/class_loader/multi_library_class_loader.hpp",
         "include/class_loader/register_macro.hpp",
+        "include/class_loader/visibility_control.hpp",
     ],
     includes = ["include"],
     visibility = ["//visibility:public"],
