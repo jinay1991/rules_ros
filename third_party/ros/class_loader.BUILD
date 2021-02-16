@@ -24,6 +24,5 @@ cc_library(
         "@boost//:thread",
         "@console_bridge",
         "@poco//:foundation",
-        "@poco//:json",
     ],
 )

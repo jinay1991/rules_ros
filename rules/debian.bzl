@@ -34,7 +34,7 @@ def _extract_debian_package(repo_ctx, deb_file):
     repo_ctx.delete(data_archive_filename)
 
 def _debian_archive_impl(repo_ctx):
-    for file_label in repo_ctx.attr.files:
+    for file_label in repo_ctx.attr.srcs:
         repo_ctx.report_progress("Extracting {}".format(file_label))
         deb_file = repo_ctx.path(file_label)
         _extract_debian_package(repo_ctx, deb_file)
@@ -45,7 +45,7 @@ _debian_archive = repository_rule(
     implementation = _debian_archive_impl,
     local = False,
     attrs = {
-        "files": attr.label_list(mandatory = True, allow_empty = False, allow_files = True),
+        "srcs": attr.label_list(mandatory = True, allow_empty = False, allow_files = True),
         "strip_prefix": attr.string(),
         "build_file": attr.label(),
         "build_file_content": attr.string(),
@@ -63,7 +63,7 @@ def debian_archive(name, repo, package_group, strip_prefix = "", build_file = No
         name: the name of the workspace created for debian package
         repo: A url for Package Repository
         package_group: A Dict path/sha256 pairs. for the provided package.
-        strip_prefix: A directory prefix to strip from the extracted files
+        strip_prefix: A directory prefix to strip from the extracted srcs
         build_file: The file to use as BUILD file for this repository.
         build_file_content: The content for the BUILD file for this repository.
     """
@@ -77,7 +77,7 @@ def debian_archive(name, repo, package_group, strip_prefix = "", build_file = No
 
     _debian_archive(
         name = name,
-        files = file_targets,
+        srcs = file_targets,
         strip_prefix = strip_prefix,
         build_file = build_file,
         build_file_content = build_file_content,

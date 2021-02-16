@@ -5,7 +5,7 @@ cc_binary(
     srcs = ["talker.cpp"],
     visibility = ["//visibility:public"],
     deps = [
-        "@ros_comm//:roscpp",
+        "@ros//ros_comm/:roscpp",
     ],
 )
 
@@ -15,6 +15,6 @@ cc_binary(
     visibility = ["//visibility:public"],
     deps = [
         "@class_loader",
-        "@ros_comm//:roscpp",
+        "@ros//ros_comm:roscpp",
     ],
 )
