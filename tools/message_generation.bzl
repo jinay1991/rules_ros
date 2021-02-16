@@ -87,15 +87,17 @@ def generate_messages(
         name,
         srcs = None,
         ros_package_name = None,
-        deps = None):
+        deps = None,
+        **kwargs):
     """
     Generates messages. Uses the _genpy and _gencpp to shell out to the code generate scripts.
 
     Args:
-        name:name
-        srcs:srcs
-        ros_package_name:ros_package_name
-        deps:deps
+        name: A Name used to generate message target containing (*.h)
+        srcs: List of *.msg
+        ros_package_name: Package name
+        deps: Dependencies
+        **kwargs:
     Returns:
         A generated message header
     """
