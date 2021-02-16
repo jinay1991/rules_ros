@@ -1,12 +1,13 @@
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@rules_ros//rules:rules_debian.bzl", "debian_archive")
 
 def poco():
     """ Load poco as Dependency """
     if "poco" not in native.existing_rules():
-        http_archive(
+        debian_archive(
             name = "poco",
-            sha256 = "eb2aeecd25d9733d1e223f459560cd285d4cbf60983f96468e6eb0097ac5f4a6",
-            strip_prefix = "poco-1.10.1",
+            urls = [
+                "http://ports.ubuntu.com/pool/universe/p/poco/libpoco-dev_1.9.2-3ubuntu3_arm64.deb",
+            ],
+            sha256 = "293066f48e03cfc238cd81e85be33c5c217a4cb936986357ea89e1b1b09bcb1a",
             build_file = "//third_party/poco:poco.BUILD",
-            url = "https://pocoproject.org/releases/poco-1.10.1/poco-1.10.1.tar.gz",
         )
