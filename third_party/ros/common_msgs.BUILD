@@ -38,13 +38,13 @@ py_binary(
 
 filegroup(
     name = "actionlib_msgs_package_xml",
-    srcs = "package.xml",
+    srcs = "actionlib_msgs/package.xml",
 )
 
 # common_msgs
 filegroup(
     name = "common_msgs_package_xml",
-    srcs = "package.xml",
+    srcs = "common_msgs/package.xml",
 )
 
 # diagnostic_msgs
@@ -74,7 +74,7 @@ generate_services(
 
 filegroup(
     name = "diagnostic_msgs_package_xml",
-    srcs = "package.xml",
+    srcs = "diagnostic_msgs/package.xml",
 )
 
 # geometry_msgs
@@ -93,7 +93,7 @@ generate_messages(
 
 filegroup(
     name = "geometry_msgs_package_xml",
-    srcs = "package.xml",
+    srcs = "geometry_msgs/package.xml",
 )
 
 # nav_msgs
@@ -127,7 +127,7 @@ generate_services(
 
 filegroup(
     name = "nav_msgs_package_xml",
-    srcs = "package.xml",
+    srcs = "nav_msgs/package.xml",
 )
 
 # sensor_msgs
@@ -163,7 +163,7 @@ generate_messages(
 
 filegroup(
     name = "sensor_msgs_package_xml",
-    srcs = "package.xml",
+    srcs = "sensor_msg/package.xml",
 )
 
 # shape_msgs
@@ -171,13 +171,18 @@ generate_messages(
     name = "shape_msgs",
     srcs = glob([
         "shape_msgs/**/*.msg",
-        "shape_msgs/**/*.srv",
     ]),
     ros_package_name = "shape_msgs",
     deps = [
+        ":geometry_msgs",
         "@message_runtime",
         "@std_msgs",
     ],
+)
+
+filegroup(
+    name = "shape_msgs_package_xml",
+    srcs = "shape_msgs/package.xml",
 )
 
 # stereo_msgs
@@ -185,13 +190,17 @@ generate_messages(
     name = "stereo_msgs",
     srcs = glob([
         "stereo_msgs/**/*.msg",
-        "stereo_msgs/**/*.srv",
     ]),
     deps = [
         ":sensor_msgs",
         "@message_runtime",
         "@std_msgs",
     ],
+)
+
+filegroup(
+    name = "stereo_msgs_package_xml",
+    srcs = "stereo_msgs/package.xml",
 )
 
 # trajectory_msgs
@@ -203,9 +212,15 @@ generate_messages(
     ]),
     ros_package_name = "trajectory_msgs",
     deps = [
+        ":geometry_msgs",
         "@message_runtime",
         "@std_msgs",
     ],
+)
+
+filegroup(
+    name = "trajectory_msgs_package_xml",
+    srcs = "trajectory_msgs/package.xml",
 )
 
 # visualization_msgs
@@ -221,4 +236,9 @@ generate_messages(
         "@message_runtime",
         "@std_msgs",
     ],
+)
+
+filegroup(
+    name = "visualization_msgs_package_xml",
+    srcs = "visualization_msgs/package.xml",
 )
