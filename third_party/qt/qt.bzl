@@ -1,4 +1,4 @@
-load("@rules_ros//ros:debian.bzl", "debian_archive")
+load("@rules_ros//ros:rules_debian.bzl", "debian_archive")
 load("@rules_ros//third_party:remotes.bzl", "UBUNTU_ARCHIVE")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
