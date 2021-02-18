@@ -171,12 +171,10 @@ def ros():
     )
 
     maybe(
-        debian_archive,
+        http_archive,
         name = "double_conversion",
-        repo = UBUNTU_ARCHIVE,
-        package_group = {
-            "pool/universe/d/double-conversion/libdouble-conversion3_3.1.5-5ubuntu1_amd64.deb": "7ff4b5f06ebe35c34bfe3d7a3bb229aba90964d979f65fed23d0ba23667f935b",
-            "pool/universe/d/double-conversion/libdouble-conversion-dev_3.1.5-5ubuntu1_amd64.deb": "32034ad6aa0a4861a1ec10ba4252ba2a08373575b9f077b852b4d66e10d5263a",
-        },
+        sha256 = "a63ecb93182134ba4293fd5f22d6e08ca417caafa244afaa751cbfddf6415b13",
+        strip_prefix = "double-conversion-3.1.5",
         build_file = "//third_party/ros:double_conversion.BUILD",
+        url = "https://github.com/google/double-conversion/archive/v3.1.5.tar.gz",
     )
