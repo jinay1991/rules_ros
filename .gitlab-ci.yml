@@ -12,7 +12,7 @@ buildifier:
   stage: check
   image: ubuntu:20.04
   before_script:
-    - apt-get update && apt-get install -y wget 
+    - apt-get update && apt-get install -y wget
     - wget https://github.com/bazelbuild/buildtools/releases/download/3.4.0/buildifier
     - chmod +x buildifier
     - mv buildifier /usr/bin
@@ -30,5 +30,6 @@ bazel-build:
     - curl https://bazel.build/bazel-release.pub.gpg | apt-key add -
     - echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
     - apt-get update && apt-get install -y bazel
+    - apt-get install -y python3-pip python-is-python3
   script:
     - bazel build //...
