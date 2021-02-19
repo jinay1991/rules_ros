@@ -1,12 +1,11 @@
-load("@rules_ros//ros:rules_debian.bzl", "debian_archive")
+load("@rules_ros//ros:rules_debian.bzl", "http_debian")
 load("@rules_ros//third_party:remotes.bzl", "UBUNTU_ARCHIVE")
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
 def qt():
     """ Load QT as dependency """
-
     maybe(
-        debian_archive,
+        http_debian,
         name = "qt",
         repo = UBUNTU_ARCHIVE,
         package_group = {

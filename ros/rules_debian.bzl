@@ -33,7 +33,7 @@ def _extract_debian_package(repo_ctx, deb_file):
     )
     repo_ctx.delete(data_archive_filename)
 
-def _debian_archive_impl(repo_ctx):
+def _http_debian_impl(repo_ctx):
     for file_label in repo_ctx.attr.srcs:
         repo_ctx.report_progress("Extracting {}".format(file_label))
         deb_file = repo_ctx.path(file_label)
@@ -41,8 +41,8 @@ def _debian_archive_impl(repo_ctx):
 
     workspace_and_buildfile(repo_ctx)
 
-_debian_archive = repository_rule(
-    implementation = _debian_archive_impl,
+_http_debian = repository_rule(
+    implementation = _http_debian_impl,
     local = False,
     attrs = {
         "srcs": attr.label_list(mandatory = True, allow_empty = False, allow_files = True),
@@ -55,7 +55,7 @@ _debian_archive = repository_rule(
     },
 )
 
-def debian_archive(name, repo, package_group, strip_prefix = "", build_file = None, build_file_content = None):
+def http_debian(name, repo, package_group, strip_prefix = "", build_file = None, build_file_content = None):
     """
     Download and extracts debian package to include it as single target.
 
@@ -75,7 +75,7 @@ def debian_archive(name, repo, package_group, strip_prefix = "", build_file = No
 
     file_targets = ["@{}//file:downloaded".format(file_label) for file_label in file_labels]
 
-    _debian_archive(
+    _http_debian(
         name = name,
         srcs = file_targets,
         strip_prefix = strip_prefix,

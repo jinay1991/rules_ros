@@ -1,6 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-load("@rules_ros//ros:rules_debian.bzl", "debian_archive")
+load("@rules_ros//ros:rules_debian.bzl", "http_debian")
 load("@rules_ros//third_party:remotes.bzl", "UBUNTU_ARCHIVE")
 
 def ros():
@@ -160,7 +160,7 @@ def ros():
     # TRANSITIVE DEPENDENCIES #
     ###########################
     maybe(
-        debian_archive,
+        http_debian,
         name = "poco",
         repo = UBUNTU_ARCHIVE,
         package_group = {
