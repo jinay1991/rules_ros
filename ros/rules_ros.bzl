@@ -29,3 +29,17 @@ def ros_binary(
         **kwargs: additional arguments for a binary rule
     """
     return None
+
+def ros_package(
+        name,
+        srcs,
+        **kwargs):
+    """
+    Generate ROS binary
+
+    Args:
+        name:name
+        srcs:srcs
+        **kwargs: additional arguments for a binary rule
+    """
+    return None
